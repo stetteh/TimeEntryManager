@@ -9,7 +9,8 @@ namespace TimeEntryManager
     public class Developer : DbContext
     {
         public int DevId { get; set; }
-        public string FullName { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
         public string Title { get; set; }
         public DateTime StartDate { get; set; }
         public string Email { get; set; }
