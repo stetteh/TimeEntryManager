@@ -10,14 +10,18 @@ namespace TimeEntryManager
     {
         static void Main(string[] args)
         {
-            using (var db = new Developer())
-            {
-                Developer dev1 = new Developer() { FName = "Seth", LName = "Quaye", Title = "Developer",
-                                                StartDate = new DateTime(2016, 01, 01), Email = "squaye@gmail.com"};
 
-                
-                newdev.SaveChanges();
-            }
+            Developer dev1 = new Developer()
+            {
+                FirstName = "Seth",
+                LastName = "Quaye",
+                Title = "Developer",
+                StartDate = new DateTime(2016, 01, 01),
+                Email = "squaye@gmail.com"
+            };
+
+
+
         }
     }
 }
