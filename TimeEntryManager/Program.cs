@@ -1,27 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TimeEntryManager
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            var db = new TimeEntryDbContext();
 
-            Developer dev1 = new Developer()
+            var brian = db.Developers.FirstOrDefault(x => x.FirstName == "Brian");
+
+
+            if (brian == null)
             {
-                FirstName = "Seth",
-                LastName = "Quaye",
-                Title = "Developer",
-                StartDate = new DateTime(2016, 01, 01),
-                Email = "squaye@gmail.com"
-            };
+                brian = new Developer
+                {
+                    FirstName = "Brian",
+                    LastName = "Stickney",
+                    Title = "Developer",
+                    StartDate = new DateTime(2016, 02, 01),
+                    Email = "brian@test.com"
+                };
 
+                db.Developers.Add(brian);
+            }
 
+            brian.Title = "SOme New Title";
 
+            db.SaveChanges();
         }
     }
 }
