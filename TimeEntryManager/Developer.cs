@@ -38,16 +38,8 @@ namespace TimeEntryManager
         public string Name { get; set; }
 
         public virtual ICollection<Project> Projects { get; set; } = new List<Project>(); //maps to project class or project Id
+        public virtual ICollection<Industry> Industries  { get; set; } = new List<Industry>();
     }
-
-    //public class TimeEntry
-    //{
-    //    public int Id { get; set; }
-    //    public DateTime datetime { get; set; }
-
-    //    public virtual Developer Developer { get; set; }
-    //    public virtual Project Project { get; set; }
-    //}
 
     public class Group
     {
@@ -56,4 +48,23 @@ namespace TimeEntryManager
 
         public virtual ICollection<Developer> Developers { get; set; } = new List<Developer>();
     }
+
+    public class TimeEntry
+    {
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public float TimeSpent { get; set; }
+
+        public virtual Developer Developer { get; set; }
+        public virtual Project Project { get; set; }
+    }
+
+    public class Industry
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
+    }
+
 }
