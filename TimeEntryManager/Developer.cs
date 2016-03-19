@@ -28,6 +28,7 @@ namespace TimeEntryManager
         public string Name { get; set; }
 
         public virtual ICollection<Developer> Developers { get; set; } = new List<Developer>();
+        public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
 
         public virtual Client Client { get; set; }
     }
@@ -55,8 +56,8 @@ namespace TimeEntryManager
         public DateTime Date { get; set; }
         public float TimeSpent { get; set; }
 
+        public virtual Task Task { get; set; }
         public virtual Developer Developer { get; set; }
-        public virtual Project Project { get; set; }
     }
 
     public class Industry
@@ -65,6 +66,14 @@ namespace TimeEntryManager
         public string Name { get; set; }
 
         public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
+    }
+
+    public class Task
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
     }
 
 }
