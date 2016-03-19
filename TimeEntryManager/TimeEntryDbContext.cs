@@ -22,6 +22,7 @@ namespace TimeEntryManager
         public virtual DbSet<Developer> Developers { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Group> Groups { get; set; } 
     }
 
    

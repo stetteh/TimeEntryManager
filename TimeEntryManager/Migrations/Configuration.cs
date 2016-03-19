@@ -10,6 +10,7 @@ namespace TimeEntryManager.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(TimeEntryManager.TimeEntryDbContext context)
@@ -33,6 +34,7 @@ namespace TimeEntryManager.Migrations
 
             var ironyardClient = new Client() { Name = "The Iron Yard" };
 
+           
             context.Developers.AddOrUpdate(
                 d => new { d.FirstName, d.LastName },
                 seth, daniel
@@ -41,6 +43,21 @@ namespace TimeEntryManager.Migrations
             context.Projects.AddOrUpdate(p => p.Name,
                 new Project() { Name = "Update Website", Client = ironyardClient, Developers = { daniel, seth } }
                 );
+
+            var backend = new Group() { Name = "BackEnd" };
+            backend.Developers.Add(daniel);
+
+            var frontend = new Group() { Name = "FrontEnd" };
+            frontend.Developers.Add(seth);
+
+
+            context.Groups.AddOrUpdate(g => g.Name,
+
+                backend, frontend
+            );
+            
+
+
 
         }
     }
