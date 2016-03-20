@@ -55,6 +55,11 @@ namespace TimeEntryManager
                 Console.WriteLine($"Group is {d.Name}");
             }
 
+            //foreach (var te in db.TimeEntries)
+            //{
+                
+            //}
+
             Console.ReadLine();
         }
     }
