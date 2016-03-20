@@ -66,6 +66,7 @@ namespace TimeEntryManager
         public string Name { get; set; }
 
         public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
+        public virtual ICollection<IndustryComment> IndustryComments { get; set; } = new List<IndustryComment>();
     }
 
     public class Task

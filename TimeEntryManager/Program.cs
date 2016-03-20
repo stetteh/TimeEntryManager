@@ -42,7 +42,7 @@ namespace TimeEntryManager
 
             foreach (var d in db.Clients)
             {
-                Console.WriteLine($"{d.Name} is the client name");
+                Console.WriteLine($"{d.Name} is the Client");
             }
 
             foreach (var d in db.Industries)
@@ -50,9 +50,9 @@ namespace TimeEntryManager
                 Console.WriteLine($"{d.Name} is the industry");
             }
 
-            foreach (var d in db.Developers)
+            foreach (var d in db.Groups)
             {
-                Console.WriteLine($"{d.FirstName} {d.LastName}, {d.Title}, {d.Email}, {d.StartDate.ToShortDateString()}");
+                Console.WriteLine($"Group is {d.Name}");
             }
 
             Console.ReadLine();

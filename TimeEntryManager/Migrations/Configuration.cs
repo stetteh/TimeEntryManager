@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TimeEntryManager.Migrations
 {
     using System;
@@ -33,6 +35,9 @@ namespace TimeEntryManager.Migrations
             };
 
             var ironyardClient = new Client() { Name = "The Iron Yard" };
+            var eindustry1 = new Industry() {Name = "Education"};
+            var comment = new IndustryComment() { Comments = "Education i s a fascinating industry, glad to have multiple player"};
+
 
            
             context.Developers.AddOrUpdate(
@@ -50,12 +55,18 @@ namespace TimeEntryManager.Migrations
             var frontend = new Group() { Name = "FrontEnd" };
             frontend.Developers.Add(seth);
 
-
             context.Groups.AddOrUpdate(g => g.Name,
-
                 backend, frontend
             );
-            
+
+            context.Industries.AddOrUpdate(i => i.Name,
+                new Industry() { Name = "Education"}
+            );
+
+            context.IndustryComments.AddOrUpdate(c => c.Comments,
+                comment
+            );
+
 
 
 
