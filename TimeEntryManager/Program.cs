@@ -35,6 +35,26 @@ namespace TimeEntryManager
                 Console.WriteLine($"{d.FirstName} {d.LastName}, {d.Title}, {d.Email}, {d.StartDate.ToShortDateString()}");
             }
 
+            foreach (var d in db.Projects)
+            {
+                Console.WriteLine($"Project Name: {d.Name}");
+            }
+
+            foreach (var d in db.Clients)
+            {
+                Console.WriteLine($"{d.Name} is the client name");
+            }
+
+            foreach (var d in db.Industries)
+            {
+                Console.WriteLine($"{d.Name} is the industry");
+            }
+
+            foreach (var d in db.Developers)
+            {
+                Console.WriteLine($"{d.FirstName} {d.LastName}, {d.Title}, {d.Email}, {d.StartDate.ToShortDateString()}");
+            }
+
             Console.ReadLine();
         }
     }
