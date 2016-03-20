@@ -26,9 +26,16 @@ namespace TimeEntryManager
                 db.Developers.Add(brian);
             }
 
-            brian.Title = "SOme New Title";
+            brian.Title = "Some New Title";
 
             db.SaveChanges();
+
+            foreach (var d in db.Developers)
+            {
+                Console.WriteLine($"{d.FirstName} {d.LastName}, {d.Title}, {d.Email}, {d.StartDate.ToShortDateString()}");
+            }
+
+            Console.ReadLine();
         }
     }
 }
