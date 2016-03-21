@@ -7,8 +7,8 @@ namespace TimeEntryManager
         public int Id { get; set; }
         public string Comments { get; set; }
 
-        public virtual ICollection<Developer> Developers { get; set; } = new List<Developer>();
-        public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
+        public virtual Developer Developer { get; set; }
+        public virtual Client Client { get; set; }
     }
 
     public class ProjectComment
@@ -16,8 +16,8 @@ namespace TimeEntryManager
         public int Id { get; set; }
         public string Comments { get; set; }
 
-        public virtual ICollection<Developer> Developers { get; set; } = new List<Developer>();
-        public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
+        public virtual Developer Developer { get; set; }
+        public virtual Project Project { get; set; }
 
     }
 
@@ -26,8 +26,8 @@ namespace TimeEntryManager
         public int Id { get; set; }
         public string Comments { get; set; }
 
-        public virtual ICollection<Developer> Developers { get; set; } = new List<Developer>();
-        public virtual ICollection<Industry> Industries { get; set; } = new List<Industry>();
+        public virtual  Developer  Developer { get; set; }
+        public virtual Industry Industry { get; set; }
 
     }
 }

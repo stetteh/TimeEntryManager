@@ -34,20 +34,10 @@ namespace TimeEntryManager.Migrations
                 StartDate = new DateTime(2014, 5, 1)
             };
 
-            var ironyardClient = new Client() { Name = "The Iron Yard" };
-            var eindustry1 = new Industry() {Name = "Education"};
-            var comment = new IndustryComment() { Comments = "Education i s a fascinating industry, glad to have multiple player"};
-
-
-           
             context.Developers.AddOrUpdate(
-                d => new { d.FirstName, d.LastName },
-                seth, daniel
-                 );
-
-            context.Projects.AddOrUpdate(p => p.Name,
-                new Project() { Name = "Update Website", Client = ironyardClient, Developers = { daniel, seth } }
-                );
+              d => new { d.FirstName, d.LastName },
+              seth, daniel
+               );
 
             var backend = new Group() { Name = "BackEnd" };
             backend.Developers.Add(daniel);
@@ -59,14 +49,46 @@ namespace TimeEntryManager.Migrations
                 backend, frontend
             );
 
+            var ironyardClient = new Client() { Name = "The Iron Yard" };
+
+
+            var project1 = new Project() {Name = "Update Website", Client = ironyardClient, Developers = {daniel, seth}};
+            context.Projects.AddOrUpdate(p => p.Name,
+              project1
+              );
+
+
+
+
+           
+            var comment = new IndustryComment() { Comments = "Education is a fascinating industry, glad to have multiple player"};
+            var eindustry1 = new Industry() { Name = "Education", IndustryComments = { comment } };
+
+
             context.Industries.AddOrUpdate(i => i.Name,
-                new Industry() { Name = "Education"}
+                eindustry1
             );
+
+
+
+           
+
+            var newtime = new TimeEntry() {Date = new DateTime(2016, 01, 10), TimeSpent = 10.5f, Developer = seth, Task = new Task() { Name = "Create footer", Project = project1 } };
+
+
+           context.TimeEntries.AddOrUpdate(p=>p.Date, newtime);
+          
+
+          
+
+           
+
 
             context.IndustryComments.AddOrUpdate(c => c.Comments,
                 comment
             );
 
+            
 
 
 

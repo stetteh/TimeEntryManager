@@ -42,7 +42,7 @@ namespace TimeEntryManager
         public string Name { get; set; }
 
         public virtual ICollection<Project> Projects { get; set; } = new List<Project>(); //maps to project class or project Id
-        public virtual ICollection<Industry> Industries  { get; set; } = new List<Industry>();
+        public virtual ICollection<Industry> Industries { get; set; } = new List<Industry>();
     }
 
     public class Group
@@ -77,7 +77,7 @@ namespace TimeEntryManager
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
+        public virtual Project Project { get; set; }
     }
 
 }
