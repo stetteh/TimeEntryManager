@@ -33,6 +33,14 @@ namespace TimeEntryManager.Migrations
                 Title = "Junior Developer",
                 StartDate = new DateTime(2014, 5, 1)
             };
+            var lucky = new Developer()
+            {
+                Email = "lucky@test.com",
+                FirstName = "Lucky",
+                LastName = "Smith",
+                Title = "App Developer",
+                StartDate = new DateTime(2016, 02, 01)
+            };
 
             context.Developers.AddOrUpdate(
               d => new { d.FirstName, d.LastName },
@@ -41,9 +49,11 @@ namespace TimeEntryManager.Migrations
 
             var backend = new Group() { Name = "BackEnd" };
             backend.Developers.Add(daniel);
+            backend.Developers.Add(seth);
 
             var frontend = new Group() { Name = "FrontEnd" };
             frontend.Developers.Add(seth);
+            frontend.Developers.Add(lucky);
 
             context.Groups.AddOrUpdate(g => g.Name,
                 backend, frontend
@@ -56,11 +66,12 @@ namespace TimeEntryManager.Migrations
             context.Projects.AddOrUpdate(p => p.Name,
               project1
               );
+            var project2 = new Project() {Name = "Update Mobile App", Client = ironyardClient, Developers = {seth, lucky}};
+             context.Projects.AddOrUpdate(p => p.Name,
+             project2
+             );
 
 
-
-
-           
             var comment = new IndustryComment() { Comments = "Education is a fascinating industry, glad to have multiple player"};
             var eindustry1 = new Industry() { Name = "Education", IndustryComments = { comment } };
 
@@ -68,22 +79,15 @@ namespace TimeEntryManager.Migrations
             context.Industries.AddOrUpdate(i => i.Name,
                 eindustry1
             );
-
-
-
-           
-
             var newtime = new TimeEntry() {Date = new DateTime(2016, 01, 10), TimeSpent = 10.5f, Developer = seth, Task = new Task() { Name = "Create footer", Project = project1 } };
+            var newtime1 = new TimeEntry() { Date = new DateTime(2016, 01, 11), TimeSpent = 5.50f, Developer = seth, Task = new Task() { Name = "Create header", Project = project1 } };
+            var newtime2 = new TimeEntry() { Date = new DateTime(2016, 01, 10), TimeSpent = 2.5f, Developer = lucky, Task = new Task() { Name = "Create Nav Bar", Project = project1 } };
 
 
-           context.TimeEntries.AddOrUpdate(p=>p.Date, newtime);
+            context.TimeEntries.AddOrUpdate(p=>p.Date, newtime, newtime2, newtime1);
           
 
           
-
-           
-
-
             context.IndustryComments.AddOrUpdate(c => c.Comments,
                 comment
             );
