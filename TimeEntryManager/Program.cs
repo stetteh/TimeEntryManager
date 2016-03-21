@@ -55,11 +55,9 @@ namespace TimeEntryManager
                 Console.WriteLine($"Group is {d.Name}");
             }
 
-            //foreach (var te in db.TimeEntries)
-            //{
-                
-            //}
+            float billinghours = Enumerable.Sum(db.TimeEntries, t => t.TimeSpent);
 
+            Console.WriteLine($" billed hours is {billinghours}");
 
             Console.ReadLine();
         }
