@@ -82,9 +82,11 @@ namespace TimeEntryManager.Migrations
             var newtime = new TimeEntry() {Date = new DateTime(2016, 01, 10), TimeSpent = 10.5f, Developer = seth, Task = new Task() { Name = "Create footer", Project = project1 } };
             var newtime1 = new TimeEntry() { Date = new DateTime(2016, 01, 11), TimeSpent = 5.50f, Developer = seth, Task = new Task() { Name = "Create header", Project = project1 } };
             var newtime2 = new TimeEntry() { Date = new DateTime(2016, 01, 10), TimeSpent = 2.5f, Developer = lucky, Task = new Task() { Name = "Create Nav Bar", Project = project1 } };
+            var newtime3 = new TimeEntry() { Date = new DateTime(2016, 01, 15), TimeSpent = 20f, Developer = lucky, Task = new Task() { Name = "new wire frame", Project = project2 } };
+            var newtime4 = new TimeEntry() { Date = new DateTime(2016, 01, 16), TimeSpent = 10.5f, Developer = daniel, Task = new Task() { Name = "update login", Project = project2 } };
 
 
-            context.TimeEntries.AddOrUpdate(p=>p.Date, newtime, newtime2, newtime1);
+            context.TimeEntries.AddOrUpdate(p=>p.Date, newtime, newtime2, newtime1, newtime3, newtime4);
           
 
           

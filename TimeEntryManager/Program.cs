@@ -55,9 +55,17 @@ namespace TimeEntryManager
                 Console.WriteLine($"Group is {d.Name}");
             }
 
-            float billinghours = Enumerable.Sum(db.TimeEntries, t => t.TimeSpent);
+            var billinghours =
+                from t in db.TimeEntries
+                group t by t.Task.Project
+                into g
+                select new { ProjectName = g.Key.Name, TotalHours = g.Sum(x=>x.TimeSpent)};
 
-            Console.WriteLine($" billed hours is {billinghours}");
+            foreach (var projecthours in billinghours)
+            {
+                Console.WriteLine($"{projecthours.ProjectName}: {projecthours.TotalHours}");
+
+            }
 
             Console.ReadLine();
         }
